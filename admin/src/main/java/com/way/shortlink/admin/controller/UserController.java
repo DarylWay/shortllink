@@ -1,5 +1,7 @@
 package com.way.shortlink.admin.controller;
 
+import com.way.shortlink.admin.common.convention.result.Result;
+import com.way.shortlink.admin.common.convention.result.Results;
 import com.way.shortlink.admin.dto.resp.UserRespDTO;
 import com.way.shortlink.admin.service.UserService;
 import lombok.RequiredArgsConstructor;
@@ -20,7 +22,7 @@ public class UserController {
      * 根据用户名查询信息
      */
     @GetMapping("/api/shortlink/v1/user/{username}")
-    public UserRespDTO getUserByUsername(@PathVariable("username") String username){
-        return userService.getByUsername(username);
+    public Result<UserRespDTO> getUserByUsername(@PathVariable("username") String username){
+        return Results.success(userService.getByUsername(username));
     }
 }
